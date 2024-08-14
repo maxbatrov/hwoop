@@ -20,18 +20,6 @@ public class Radio {
         }
     }
 
-    public void increaseStation() {
-        if (currentStation < 9) {
-            currentStation = currentStation + 1;
-        }
-    }
-
-    public void decreaseStation() {
-        if (currentStation > 0) {
-            currentStation = currentStation - 1;
-        }
-    }
-
 
     public void increaseVolume() {
         if (currentVollume < 100) {
