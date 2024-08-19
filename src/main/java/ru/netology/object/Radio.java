@@ -1,36 +1,27 @@
 package ru.netology.object;
 
 public class Radio {
-    private int currentStation;
+
+    private int maxStation = 9;
+    private int minStation = 0;
+    private int currentStation = minStation;
     private int currentVollume;
 
     public void next() {
-        if (currentStation != 9) {
-            currentStation++;
-        } else {
-            currentStation = 0;
-        }
-    }
-
-    public void prev() {
-        if (currentStation != 0) {
-            currentStation--;
-        } else {
-            currentStation = 9;
-        }
+        int target = currentStation + 1;
+        setCurrentStation(target);
     }
 
 
-    public void increaseVolume() {
-        if (currentVollume < 100) {
-            currentVollume = currentVollume + 1;
-        }
+    public Radio(int size) {
+        maxStation = minStation + size - 1;
+
     }
 
-    public void decreaseVolume() {
-        if (currentVollume > 0) {
-            currentVollume = currentVollume - 1;
-        }
+    public Radio() {
+        this.minStation = minStation;
+        this.maxStation = maxStation;
+        this.currentStation = minStation;
     }
 
 
@@ -38,27 +29,36 @@ public class Radio {
         return currentStation;
     }
 
-    public void setCurrentStation(int currentStation) {
-        if (currentStation < 0) {
-            return;
+    public int getMaxStation() {
+        return maxStation;
+    }
+
+    public int getMinStation() {
+        return minStation;
+    }
+
+    public void setCurrentStation(int newCurrentStation) {
+        if (newCurrentStation < minStation) {
+            newCurrentStation = maxStation;
         }
-        if (currentStation > 9) {
-            return;
+        if (newCurrentStation > maxStation) {
+            newCurrentStation = minStation;
         }
-        this.currentStation = currentStation;
+        currentStation = newCurrentStation;
     }
 
     public int getCurrentVollume() {
         return currentVollume;
     }
 
-    public void setCurrentVollume(int currentVollume) {
-        if (currentVollume < 0) {
-            return;
-        }
-        if (currentVollume > 100) {
-            return;
-        }
-        this.currentVollume = currentVollume;
+
+    public void increaseVollume() {
+        int target = currentVollume + 1;
+        setCurrentVollume(target);
+    }
+
+
+    public void setCurrentVollume(int newCurrentVolume) {
+        currentVollume = newCurrentVolume;
     }
 }
