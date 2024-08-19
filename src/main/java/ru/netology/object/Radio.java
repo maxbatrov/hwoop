@@ -57,11 +57,6 @@ public class Radio {
         setCurrentVollume(target);
     }
 
-    public void decreaseVollume() {
-        int target = currentVollume - 1;
-        setCurrentVollume(target);
-    }
-
 
     public void setCurrentVollume(int newCurrentVolume) {
         currentVollume = newCurrentVolume;
